@@ -1,0 +1,49 @@
+def want_play():
+    play_yn = input("Would you like to play rock, paper, scissors? Yes/No")
+    answer = play_yn.lower()
+    if answer.strip() == "yes":
+        print("Yay, let's play!")
+        choice = input("rock, paper, scissors... Go! ").lower()
+        user = choice.strip()
+        if user == "rock" or user == "paper" or user == "scissors":
+            game_play(user)
+        else:
+            print("The game is called 'rock, paper, scissors'. Not 'whatever and " + user + "'.")
+            want_play()
+    elif answer.strip() == "no":
+        print("Well fine then!")
+    else: 
+        print("You OK over there?")
+def game_play(user):
+    import random
+    computer_choice = random.randrange(0,3)
+    if computer_choice == 0:
+        computer_choice = "paper" 
+    elif computer_choice == 1:
+        computer_choice = "scissors"
+    else:
+        computer_choice = "rock"
+    if computer_choice == "rock" and user == "rock":
+        print("Computer selected: " + computer_choice + "!")
+        print("Tie!")
+    elif computer_choice == "rock" and user == "paper":
+        print("Computer selected: " + computer_choice + "!")
+        print("You win!")
+    elif computer_choice == "paper" and user  == "paper":
+        print("Computer selected:" + computer_choice + "!")
+        print("Tie!")
+    elif computer_choice == "paper" and user == "scissors":
+        print("Computer selected:" + computer_choice + "!")
+        print("You win!")
+    elif computer_choice == "scissors" and user == "scissors":
+        print("Computer selected:" + computer_choice + "!")
+        print("Tie!")
+    elif computer_choice == "scissors" and user == "rock":
+        print("Computer selected:" + computer_choice + "!")
+        print("You win!")
+    else:
+        print("Computer selected:" + computer_choice + "!")
+        print("Computer wins!") 
+    want_play()
+
+want_play()
